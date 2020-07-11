@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+ <h:head>
+    <title>mE-ngadu</title>
+    
+    <h:outputStylesheet library="css" name="signin.css"/>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+    
+</h:head>
+    
+    <h:body>
+        
+        <div class="form-container sign-in-container">
+             
+       <h:form class="info">
+           <i class="pi pi-check"></i>
+            <i class="pi pi-times"></i>
+           
+        <br><h2>Submit your complaint online</h2></br>
+        <br><h2>Keep track of your complaint</h2> </br>
+        <br><h2>Complaint is store and never read</h2></br>  
+       </h:form>
+    </div>
+	
+   
+            
+            <div class="overlay-container">
+		<div class="overlay">
+			
+			<div class="overlay-panel overlay-right">
+                            
+                                <h2>Why mE-ngata when you can</h2>
+                                <h1>mE-ngadu</h1>
+                                <br></br>
+                                <p>Join mE-ngadu today.</p>
+                                
+                                <h:form class=" overlay-right ">
+				<h:commandButton class="ghost" id="signUp" value="Sign In" action="signin.xhtml" />
+                                <h:commandButton class="ghost" id="signIn" value="Sign Up" action="signup.xhtml" />
+	
+                            </h:form>
+			</div>	
+		</div>
+	</div>
+
+</h:body>
+
+</html>
