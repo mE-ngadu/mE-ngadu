@@ -20,10 +20,10 @@
             </div>
             <div class="grid-item">
                 <br></br>
-                <h4>Name : Ali bin Abu <br></br> 
-                    Matric no : 123567 <br></br>
-                    Course : Software Engineering <br></br>
-                    Year: 3</h4>
+                <h4>Name : #{name} <br></br> 
+                    Matric no : #{matric} <br></br>
+                    Course : #{course} <br></br>
+                    Year: #{year}</h4>
             </div>
         </div>
           <!--  <div align="center">
@@ -38,33 +38,28 @@
                  <h:form>
                      <!-- coding untuk selectonemenu -->
                      <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                         
                     <p:outputLabel for="@next" value="Category:" />
-                        <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:205px">
+                    <p:selectOneMenu id="console" value="#{complaint.category}" style="width:205px">
                             <f:selectItem itemLabel="Select One" itemValue="" />
                             <f:selectItem itemLabel="Academic" itemValue="Academic" />
                             <f:selectItem itemLabel="Management" itemValue="Management" />
                             <f:selectItem itemLabel="Cafeteria" itemValue="Cafeteria" />
                         </p:selectOneMenu>
                     </h:panelGrid>
-                     <!-- coding untuk subject -->
-                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                         <p:outputLabel value="Subject: " styleClass="insert"/>
-                         <p:inputText styleClass="text"></p:inputText>
-                     </h:panelGrid>
+              
                      <!--coding untuk messages -->
                      <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                          <p:outputLabel value="Message: " styleClass="insert"/>
-                         <p:inputTextarea styleClass="text" rows="5" cols="25"></p:inputTextarea>
+                         <p:inputTextarea styleClass="text" value="#{complaint.message}" rows="5" cols="25"></p:inputTextarea>
                      </h:panelGrid>
                      <!-- coding untuk upload file -->
-                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <!-- <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                          <p:outputLabel value="Attachment: " styleClass="insert"/>
                          <h:inputFile value="#{fileUpload.handleFileUpload}" />
-                     </h:panelGrid>
+                     </h:panelGrid>-->
                      <!-- submit complain punya button -->
-                     <p:button value="Submit" style="margin-bottom: 20px;">
-                        <f:param name="submitBtn" value="10" />
-                     </p:button>
+                     <p:commandButton value="Submit" action="#{complaint.insertComplaint}"  />
                  </h:form>
                  
                  </div>
@@ -73,14 +68,16 @@
          
          <!-- Coding interface untuk navigation bar -->
          <div align="center" class="ui-dock">
+             <h:form>
              <p:dock position="bottom" class="dockstyle">
-                    <p:menuitem value="Home" icon="gambar/Home2.png" url="http://localhost:8080/WebApplication2/faces/welcomePrimefaces.xhtml"/>
-                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="http://localhost:8080/WebApplication2/faces/AddComplaint.xhtml"/>
-                    <p:menuitem value="Status" icon="gambar/status.png" url="http://localhost:8080/WebApplication2/faces/ViewStatus.xhtml"/>
-                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="http://localhost:8080/WebApplication2/faces/ViewComplaint.xhtml"/>
-                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="http://localhost:8080/WebApplication2/faces/FindUs.xhtml"/>
-                    <p:menuitem value="Logout" icon="gambar/logout.png" url="signin.xhtml"/>
+                    <p:menuitem value="Home" icon="gambar/Home2.png" url="welcomePrimefaces.xhtml"/>
+                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="AddComplaint.xhtml"/>
+                    <p:menuitem value="Status" icon="gambar/status.png" url="ViewStatus.xhtml"/>
+                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="ViewComplaint.xhtml"/>
+                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="FindUs.xhtml"/>
+                    <p:menuitem value="Logout" icon="gambar/logout.png" action="#{loginBean.logout}"/>
                 </p:dock>
+             </h:form>     
          </div>
     </h:body>
 </html>

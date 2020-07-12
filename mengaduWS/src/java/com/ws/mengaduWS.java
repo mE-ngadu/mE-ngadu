@@ -5,18 +5,19 @@
  */
 package com.ws;
 
-import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.ejb.Stateless;
+import javax.jws.Oneway;
 
 /**
  *
- * @author Azmone
+ * @author user
  */
 @WebService(serviceName = "mengaduWS")
+@Stateless()
 public class mengaduWS {
-
 
     /**
      * Web service operation
@@ -44,13 +45,16 @@ public class mengaduWS {
         String course=null;
         switch(inCourse){
             case 1:
-                course = "Software Engineering";
+                course = "SOFFTWARE ENGINEERING";
+                break;
             case 2:
-                course = "Networking";
+                course = "COMPUTER NETWORK";
+                break;
             case 3:
-                course = "Multimedia";
+                course = "MULTIMEDIA";
+                break;
             case 4:
-                course = "Computer System";    
+                course = "COMPUTER SYSTEM";    
         }
         return course;
     }
@@ -64,13 +68,16 @@ public class mengaduWS {
         String stYear = null;
           switch(year){
             case 1:
-                stYear = "First Year";
+                stYear = "FIRST YEAR";
+                break;
             case 2:
-                stYear = "Second Year";
+                stYear = "SECOND YEAR";
+                break;
             case 3:
-                stYear = "Third Year";
+                stYear = "THIRD YEAR";
+                break;
             case 4:
-                stYear = "Final Year";    
+                stYear = "FINAL YEAR";    
         }
         return stYear;
     }
@@ -95,9 +102,11 @@ public class mengaduWS {
         switch (stat){
             case 1:
                 status ="pending";
+                break;
             
             case 2:
                 status ="viewed";
+                break;
             
             case 3:
                 status ="completed";
@@ -106,15 +115,6 @@ public class mengaduWS {
         return status;
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "stduentPass")
-    public String stduentPass(@WebParam(name = "pass") String pass) {
-        //TODO write your implementation code here:
-        String temp = pass;
-        return temp;
-    }
-
-
+    
+    
 }

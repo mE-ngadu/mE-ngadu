@@ -6,58 +6,77 @@
       xmlns:p="http://primefaces.org/ui">
 
     <!-- UI untuk view complain -->
-    
-        <h:head>
-             <title>mE-ngadu</title>
-           <h:outputStylesheet library="css" name="trylagi.css"/>
-        </h:head>
-        <h:body>
-            <div class="grid-container" >
+
+    <h:head>
+        <title>mE-ngadu</title>
+        <h:outputStylesheet library="css" name="trylagi.css"/>
+        <f:metadata>
+            <f:viewAction action="#{complaint.retrieveComplaint}" />
+        </f:metadata>
+
+    </h:head>
+    <h:body>
+        <div class="grid-container" >
             <div class="grid-item">
                 <h:graphicImage styleClass="image" value="gambar/f7b6d63e-333e-4e3b-9444-b33f24c3ca45_200x200.png"/>
             </div>
             <div class="grid-item">
                 <br></br>
-                <h4>Name : Ali bin Abu <br></br> 
-                    Matric no : 123567 <br></br>
-                    Course : Software Engineering <br></br>
-                    Year: 3</h4>
+                <h4>Name : #{name} <br></br> 
+                    Matric no : #{matric} <br></br>
+                    Course : #{course} <br></br>
+                    Year: #{year}</h4>
             </div>
-             </div> 
-            <!-- coding untuk koleksi complaint complaint -->
-                <div position="center">
-                    <h3 align="center">COMPLAINT</h3>
-                    <h:form>
-                        <p:dataTable var="complaint" value="#{dtBasicView.cars}" rowStyleClass="#{car.year le 1990 ? 'old' : null}">
-                            <p:column headerText="Category">
-                                 <h:outputText value="#{complaint.cat}" />
-                            </p:column>
- 
-                            <p:column headerText="Complaint">
-                                 <h:outputText value="#{complaint.comp}" />
-                            </p:column>
- 
-                            <p:column headerText="Send by">
-                                 <h:outputText value="#{complaint.sendby}" />
-                            </p:column>
- 
-                            <p:column headerText="Date">
-                                 <h:outputText value="#{complaint.date}" />
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </div>
-            <!-- coding untuk navigation bar -->
-            <div align="center" class="ui-dock">
-                <p:dock position="bottom">
-                    <p:menuitem value="Home" icon="gambar/Home2.png" url="http://localhost:8080/WebApplication2/faces/welcomePrimefaces.xhtml"/>
-                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="http://localhost:8080/WebApplication2/faces/AddComplaint.xhtml"/>
-                    <p:menuitem value="Status" icon="gambar/status.png" url="http://localhost:8080/WebApplication2/faces/ViewStatus.xhtml"/>
-                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="http://localhost:8080/WebApplication2/faces/ViewComplaint.xhtml"/>
-                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="http://localhost:8080/WebApplication2/faces/FindUs.xhtml"/>
-                    <p:menuitem value="Logout" icon="gambar/logout.png" url="signin.xhtml"/>
+        </div> 
+        <!-- coding untuk koleksi complaint complaint -->
+        <div position="center">
+            <h3 align="center">COMPLAINT</h3>
+            <h:dataTable id="dt1" value="#{complaint.list}" var="data" bgcolor="#F1F1F1" border="10" cellpadding="5" cellspacing="3" rows="4" width="50%" dir="LTR" frame="hsides" rules="all" summary="This is a JSF code to create dataTable." >
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Category" />
+                    </f:facet> 
+                    <h:outputText style="" value="#{data.cate}" ></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Complaint"/>
+                    </f:facet> 
+                    <h:outputText value="#{data.comp}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="UserID"/>
+                    </f:facet> 
+                    <h:outputText value="#{data.id}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Date"/>
+                    </f:facet> 
+                    <h:outputText value="#{data.date}"></h:outputText>
+                </h:column>
+
+
+            </h:dataTable>
+        </div>
+        <!-- coding untuk navigation bar -->
+        <div align="center" class="ui-dock">
+            <h:form>
+             <p:dock position="bottom" class="dockstyle">
+                    <p:menuitem value="Home" icon="gambar/Home2.png" url="welcomePrimefaces.xhtml"/>
+                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="AddComplaint.xhtml"/>
+                    <p:menuitem value="Status" icon="gambar/status.png" url="ViewStatus.xhtml"/>
+                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="ViewComplaint.xhtml"/>
+                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="FindUs.xhtml"/>
+                    <p:menuitem value="Logout" icon="gambar/logout.png" action="#{loginBean.logout}"/>
                 </p:dock>
-            </div>
-        </h:body>
+             </h:form>     
+        </div>
+    </h:body>
 </html>
 

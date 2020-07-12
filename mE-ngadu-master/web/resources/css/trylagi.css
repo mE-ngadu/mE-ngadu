@@ -139,10 +139,9 @@ li {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
-#map {
+/*#map {
 	width: 100%;
 	@include media-breakpoint-down(md) {
 		height: 300px;
 	}
-}
+} */

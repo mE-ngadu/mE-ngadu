@@ -1,53 +1,91 @@
+package newpackage;
 
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author noraeinsabtu
  */
- 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
- 
-@ManagedBean @SessionScoped
+import javax.faces.context.ExternalContext;
+
+@ManagedBean
+@SessionScoped
 public class loginBean {
- 
-    private String userName;
+
+    private int matric;
     private String password;
- 
-    public String getUserName() {
-        return userName;
+
+    public void setMatric(int matric) {
+        this.matric = matric;
     }
- 
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    public int getMatric() {
+        return matric;
     }
- 
-    public String getPassword() {
-        return password;
-    }
- 
+
     public void setPassword(String password) {
         this.password = password;
     }
- 
-    public String validateUserLogin() {
-        String navResult = "";
-        System.out.println("Entered Username is= " + userName + ", password is= " + password);
-        if (userName.equalsIgnoreCase("aeinsabtu") && password.equals("lala")) {
-            navResult = "success";
-        } else {
-            navResult = "failure";
-        }
-        return navResult;
+
+    public String getPassword() {
+        return password;
     }
+
+    public void validateUserLogin() throws IOException {
+        int m = getMatric();
+
+        try {
+            Statement st;
+            st = dbConnection.getInstance().dbCon();
+            Connection conn = st.getConnection();
+            ResultSet rs;
+
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM students WHERE MATRIC=? AND PASSWORD =?");
+            ps.setInt(1, m);
+            ps.setString(2, getPassword());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+
+                String name = rs.getString(3);
+                String course = rs.getString(4);
+                String year = rs.getString(5);
+                
+                FacesContext context = FacesContext.getCurrentInstance();
+              
+                context.getExternalContext().getSessionMap().put("matric", m);
+                context.getExternalContext().getSessionMap().put("name", name);
+                context.getExternalContext().getSessionMap().put("course", course);
+                context.getExternalContext().getSessionMap().put("year", year);
+
+                context.getExternalContext().redirect("AddComplaint.xhtml");
+            } else {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.getExternalContext().redirect("signup.xhtml");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(loginBean.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }
+
+    public String logout() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "signin.xhtml";
+    }
+
 }

@@ -20,10 +20,10 @@
             </div>
             <div class="grid-item">
                 <br></br>
-                <h4>Name : Ali bin Abu <br></br> 
-                    Matric no : 123567 <br></br>
-                    Course : Software Engineering <br></br>
-                    Year: 3</h4>
+                <h4>Name : #{name} <br></br> 
+                    Matric no : #{matric} <br></br>
+                    Course : #{course} <br></br>
+                    Year: #{year}</h4>
             </div>
         </div>
             <div class="home">
@@ -49,14 +49,16 @@
             
             <!-- coding untuk navigation bar -->
             <div align="center" class="ui-dock">
-                <p:dock position="bottom">
-                    <p:menuitem value="Home" icon="gambar/Home2.png" url="http://localhost:8080/WebApplication2/faces/welcomePrimefaces.xhtml"/>
-                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="http://localhost:8080/WebApplication2/faces/AddComplaint.xhtml"/>
-                    <p:menuitem value="Status" icon="gambar/status.png" url="http://localhost:8080/WebApplication2/faces/ViewStatus.xhtml"/>
-                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="http://localhost:8080/WebApplication2/faces/ViewComplaint.xhtml"/>
-                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="http://localhost:8080/WebApplication2/faces/FindUs.xhtml"/>
-                    <p:menuitem value="Logout" icon="gambar/logout.png" url="signin.xhtml"/>
+                <h:form>
+             <p:dock position="bottom" class="dockstyle">
+                    <p:menuitem value="Home" icon="gambar/Home2.png" url="welcomePrimefaces.xhtml"/>
+                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="AddComplaint.xhtml"/>
+                    <p:menuitem value="Status" icon="gambar/status.png" url="ViewStatus.xhtml"/>
+                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="ViewComplaint.xhtml"/>
+                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="FindUs.xhtml"/>
+                    <p:menuitem value="Logout" icon="gambar/logout.png" action="#{loginBean.logout}"/>
                 </p:dock>
+             </h:form>     
             </div>
         </h:body>
 </html>
