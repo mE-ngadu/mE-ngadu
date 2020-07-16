@@ -1,9 +1,27 @@
 # mE-ngadu
 CBSE mE-ngadu Project
+
+mE-ngadu is a web-based application system that is developed to ease the complaint procedure in the Computer Science and Information Technology (CSIT) faculty. The purpose of mE-ngadu is to ensure that the students and employees at CSIT faculty have an appropriate platform to make complaints regarding any issues that have been happening in the faculty. 
+
+
 This file consist of all the coding for our project.
 
 
-Ui has been created and uploaded. The user interface is implemented using the PrimeFaces
+There are a few user interface that has been created and uploaded. The user interface is implemented using the PrimeFaces.
+
+The user interface include :-
+-AddComplaint.xhtml
+-FindUs.xhtml 
+-ViewComplaint.xhtml
+-ViewStatus.xhtml
+-failure.xhtml
+-index.xhtml
+-signin.xhtml
+-signup.xhtml
+-success.xhtml
+-welcomePrimefaces.xhtml
+
+
 
 New Version
 -Added Database function
