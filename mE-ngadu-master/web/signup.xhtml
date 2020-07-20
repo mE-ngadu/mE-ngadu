@@ -45,24 +45,37 @@
 
                             <h:outputText value="Name:" />
                             <h:inputText id="lname" value="#{register.name}"/>
-
+                            <div  class=" overlay-right " id="matchGrid">
                             <h:outputText value="Course:" />
-                            <h:selectOneMenu value="#{register.courseID}"  >
+                            </div>
+                            <div class="dropdown">
+                             
+                                <div  class=" overlay-right " id="matchGrid">
+                            <h:selectOneMenu value="#{register.courseID }" class="dropbtn" >
+                                <div class="dropdown-content">
                                 <f:selectItem itemLabel="SOFTWARE ENGINEERING" itemValue="1"/>
                                 <f:selectItem itemLabel="COMPUTER NETWORK" itemValue="2"/>
                                 <f:selectItem itemLabel="MULTIMEDIA" itemValue="3"/>
                                 <f:selectItem itemLabel="COMPUTER SYSTEM" itemValue="4"/>
+                                </div>
                             </h:selectOneMenu>
-
+                                </div>
+                               
+                                <div  class=" overlay-right " id="matchGrid">
                             <h:outputLabel for="pwd1" value="Year :" />
-                            <h:selectOneMenu value="#{register.yearID}"  >
+                            </div>
+                                
+                                <div  class=" overlay-right " id="matchGrid">
+                           
+                            <h:selectOneMenu value="#{register.yearID}" class="dropbtn"   >
+                               
                                 <f:selectItem itemLabel="FIRST YEAR" itemValue="1"/>
                                 <f:selectItem itemLabel="SECOND YEAR" itemValue="2"/>
                                 <f:selectItem itemLabel="THIRD YEAR" itemValue="3"/>
                                 <f:selectItem itemLabel="FINAL YEAR" itemValue="4"/>
                             </h:selectOneMenu>
 
-
+ </div></div>
                             <br><br>
                             <h:commandButton value="Sign Up" action="#{register.registerData}" class="ghost" />
                             <h:commandButton value="Back" action="index.xhtml" />
