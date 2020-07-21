@@ -5,7 +5,15 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    
+    <style>
+        h4 {
+            
+        font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            padding: 0;
+        }
+    </style>
     <!-- UI untuk Add complaint -->
     
         <h:head>
@@ -34,6 +42,7 @@
                
             </div> -->
          <div class="submitbox" align="center">
+             <h3 align="center">Add Complaint</h3>
              <div>
                  <h:form>
                      <!-- coding untuk selectonemenu -->
@@ -51,7 +60,7 @@
                      <!--coding untuk messages -->
                      <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                          <p:outputLabel value="Message: " styleClass="insert"/>
-                         <p:inputTextarea styleClass="text" value="#{complaint.message}" rows="15" cols="45"></p:inputTextarea>
+                         <p:inputTextarea styleClass="text" value="#{complaint.message}" rows="10" cols="45"></p:inputTextarea>
                      </h:panelGrid>
                      <!-- coding untuk upload file -->
                     <!-- <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
@@ -59,7 +68,7 @@
                          <h:inputFile value="#{fileUpload.handleFileUpload}" />
                      </h:panelGrid>-->
                      <!-- submit complain punya button -->
-                     <p:commandButton value="Submit" action="#{complaint.insertComplaint}"  />
+                     <p:commandButton value="Submit" action="#{complaint.insertComplaint}"/>
                  </h:form>
                  
                  </div>

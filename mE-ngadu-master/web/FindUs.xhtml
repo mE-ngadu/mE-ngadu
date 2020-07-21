@@ -5,7 +5,15 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    
+    <style>
+        h3,h4 {
+            
+        font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            margin: 0 0 20px 0;
+            padding: 0;
+        }
+    </style>
     <!-- Ui untuk homepage -->
     
         <h:head>
@@ -14,18 +22,23 @@
         </h:head>
 
         <h:body>
-          <div class="grid-item">
-                <br></br>
-                <h4>Name : Ali bin Abu <br></br> 
-                    Matric no : 123567 <br></br>
-                    Course : Software Engineering <br></br>
-                    Year: 3</h4>
+          <div class="grid-container" >
+            <div class="grid-item">
+                <h:graphicImage styleClass="image" value="gambar/f7b6d63e-333e-4e3b-9444-b33f24c3ca45_200x200.png"/>
             </div>
-            
+            <div class="grid-item">
+                <br></br>
+               <h4>Name : #{name} <br></br> 
+                    Matric no : #{matric} <br></br>
+                    Course : #{course} <br></br>
+                    Year: #{year}</h4>
+            </div>
+             </div>
+            <h3>Find us here to meet the person in charge</h3>
             <!-- yg ni die punye display--><!--Sini-->
             <div id="outerdiv" style="width:100%; height: 100%; position:fixed; text-align:center" >
   
-            <div class ="baru" id="map-canvas" style=" width: 50%; height: 70%; margin:50px auto; display:inline-block" />
+            <div class ="baru" id="map-canvas" style=" width: 50%; height: 50%; margin:50px auto; display:inline-block" />
 
             <!-- yg ni jgn kacau-->
             <script>
