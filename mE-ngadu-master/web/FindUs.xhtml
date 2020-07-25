@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    
+    <!-- Ui untuk homepage -->
+    
+        <h:head>
+             <title>mE-ngadu</title>
+           <h:outputStylesheet library="css" name="trylagi.css"/>
+        </h:head>
+
+        <h:body>
+          <div class="grid-item">
+                <br></br>
+                <h4>Name : Ali bin Abu <br></br> 
+                    Matric no : 123567 <br></br>
+                    Course : Software Engineering <br></br>
+                    Year: 3</h4>
+            </div>
+            
+            <!-- yg ni die punye display--><!--Sini-->
+            <div id="outerdiv" style="width:100%; height: 100%; position:fixed; text-align:center" >
+  
+            <div class ="baru" id="map-canvas" style=" width: 50%; height: 70%; margin:50px auto; display:inline-block" />
+
+            <!-- yg ni jgn kacau-->
+            <script>
+                window.lat = 2.999711;
+                window.lng = 101.710281;
+
+                function updatePosition(position) {
+                    if (position) {
+                        window.lat = 2.999711;
+                        window.lng = 101.710281;
+                    }
+                }
+
+                setInterval(function () {
+                    updatePosition(getLocation());
+                }, 10000);
+
+
+                var map;
+                var mark;
+                var initialize = function () {
+                    map = new google.maps.Map(document.getElementById('map-canvas'), {center: {lat: lat, lng: lng}, zoom: 12});
+                    mark = new google.maps.Marker({position: {lat: lat, lng: lng}, map: map});
+                };
+                window.initialize = initialize;
+                var redraw = function (payload) {
+                    lat = 2.999711;
+                    lng = 101.710281;
+                    map.setCenter({lat: lat, lng: lng, alt: 0});
+                    mark.setPosition({lat: lat, lng: lng, alt: 0});
+                };
+                var pnChannel = "map2-channel";
+                var pubnub = new PubNub({
+                    publishKey: 'pub-c-65e94e77-d969-4a53-85de-e95b4184c847',
+                    subscribeKey: 'sub-c-90d07b12-b452-11ea-bf7c-ae6a3e72d19d'
+                });
+                pubnub.subscribe({channels: [pnChannel]});
+                pubnub.addListener({message: redraw});
+                setInterval(function () {
+                    pubnub.publish({channel: pnChannel, message: currentLocation()});
+                }, 5000);
+            </script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCl2Ua0C-RgokCyjEK1tlqGX05wZbc6PGs&amp;callback=initialize"></script>
+
+
+            <div id="map-canvas" style="width:600px;height:400px"></div>
+            </div>
+            <!-- coding untuk navigation bar -->
+            <div align="center" class="ui-dock">
+                <p:dock position="bottom">
+                    <p:menuitem value="Home" icon="gambar/Home2.png" url="http://localhost:8080/WebApplication2/faces/welcomePrimefaces.xhtml"/>
+                    <p:menuitem value="Add Complaint" icon="gambar/submit.png" url="http://localhost:8080/WebApplication2/faces/AddComplaint.xhtml"/>
+                    <p:menuitem value="Status" icon="gambar/status.png" url="http://localhost:8080/WebApplication2/faces/ViewStatus.xhtml"/>
+                    <p:menuitem value="Complaints" icon="gambar/paper.png" url="http://localhost:8080/WebApplication2/faces/ViewComplaint.xhtml"/>
+                    <p:menuitem value="Contact Us" icon="gambar/contact.png" url="http://localhost:8080/WebApplication2/faces/FindUs.xhtml"/>
+                    <p:menuitem value="Logout" icon="gambar/logout.png" url="signin.xhtml"/>
+                </p:dock>
+            </div>
+        </h:body>
+</html>
+
