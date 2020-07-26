@@ -29,3 +29,5 @@ New Version
 (Complaint.grab, Students.grab,Status.grab)
 -You might encounter error if try to run, that is because in the coding, I uses my usernname and password. 
  Thus for every managedbean, you need to change according to your JavaDB username and password
+
+Demo: https://www.youtube.com/watch?v=r1xgo5cC9-c
